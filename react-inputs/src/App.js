@@ -6,7 +6,8 @@ class App extends Component {
     super()
     this.state = {
       headerText: "This is not a header",
-      progress: 23
+      progress: 23,
+      color: '#000000'
     }
   }
 
@@ -30,7 +31,7 @@ class App extends Component {
     return {
       width: `${this.state.progress}%`,
       height: '100%',
-      backgroundColor: 'red',
+      backgroundColor: this.state.color,
       borderRadius: '7px',
     }
   }
@@ -38,6 +39,11 @@ class App extends Component {
   handleProgressChange(event){
     const newProgress = event.target.value;
     this.setState({ progress: newProgress })
+  }
+
+  handleColorChange(event){
+    const newColor = event.target.value;
+    this.setState({color: newColor})
   }
 
   render() {
@@ -58,6 +64,10 @@ class App extends Component {
                value={this.state.progress}
                onChange={this.handleProgressChange.bind(this)}
                style={{ width:'600px' }} />
+        <br/>
+        <input type="color"
+               value={this.state.color} 
+               onChange={this.handleColorChange.bind(this)}/>
 
       </div>
     );
